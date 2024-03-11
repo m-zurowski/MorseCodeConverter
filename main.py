@@ -14,12 +14,28 @@ letters_to_morse_dict = {
     '$': '...-..-', '@': '.--.-.'
 }
 
+morse_to_letters_dict = {value: key for key, value in letters_to_morse_dict.items()}
+
 
 def print_dict(n: str, d: dict):
     print(f"{n} dictionary:")
     for i in d.items():
         print(i[0].lower(), i[1])
     print()
+
+
+def welcome_message():
+    text = " Morse Code Converter "
+    width = 50
+    line = f"\n{text:-^{width}}\n"
+    print(line)
+
+
+def debug_message():
+    text = " Debug mode is ON "
+    width = 50
+    line = f"\n{text:-^{width}}\n"
+    print(line)
 
 
 def encode():
@@ -53,22 +69,7 @@ def decode():
     print(f"Your decoded message: {decoded_message.capitalize()}\n")
 
 
-def welcome_message():
-    text = " Morse Code Converter "
-    width = 50
-    line = f"\n{text:-^{width}}\n"
-    print(line)
-
-
-def debug_message():
-    text = " Debug mode is ON "
-    width = 50
-    line = f"\n{text:-^{width}}\n"
-    print(line)
-
-
 def main():
-    morse_to_letters_dict = {value: key for key, value in letters_to_morse_dict.items()}
     if DEBUG:
         debug_message()
         print_dict("letters to morse", letters_to_morse_dict)
