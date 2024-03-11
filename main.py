@@ -1,5 +1,3 @@
-# First Project
-
 DEBUG = 0
 
 letters_to_morse_dict = {
@@ -15,8 +13,6 @@ letters_to_morse_dict = {
     '&': '.-...', ':': '---...', ';': '-.-.-.', '=': '-...-', '+': '.-.-.', '-': '-....-', '_': '..--.-', '"': '.-..-.',
     '$': '...-..-', '@': '.--.-.'
 }
-
-morse_to_letters_dict = {value: key for key, value in letters_to_morse_dict.items()}
 
 
 def print_dict(n: str, d: dict):
@@ -71,22 +67,27 @@ def debug_message():
     print(line)
 
 
-welcome_message()
-if DEBUG:
-    debug_message()
-    print_dict("letters to morse", letters_to_morse_dict)
-    print_dict("morse to letters", morse_to_letters_dict)
-    debug_message()
+def main():
+    morse_to_letters_dict = {value: key for key, value in letters_to_morse_dict.items()}
+    if DEBUG:
+        debug_message()
+        print_dict("letters to morse", letters_to_morse_dict)
+        print_dict("morse to letters", morse_to_letters_dict)
+        debug_message()
+    welcome_message()
+    while True:
+        mode = input("Do you want to 'encode'(1), or 'decode'(2) the message?"
+                     "\nYou can also type 'exit'(0) to close the program: ").lower()
+        match mode:
+            case "encode" | "1":
+                encode()
+            case "decode" | "2":
+                decode()
+            case "exit" | "0":
+                break
+            case _:
+                print("Unknown command, restarting program...\n\n")
 
-while True:
-    mode = input("Do you want to 'encode'(1), or 'decode'(2) the message?"
-                 "\nYou can also type 'exit'(0) to close the program: ").lower()
-    match mode:
-        case "encode" | "1":
-            encode()
-        case "decode" | "2":
-            decode()
-        case "exit" | "0":
-            break
-        case _:
-            print("Unknown command, restarting program...\n\n")
+
+if __name__ == '__main__':
+    main()
